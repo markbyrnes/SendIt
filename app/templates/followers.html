@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<div>
+    <h2><b>Followers</b></h2>
+</div>
+    {% for follower in selected_user.followers %}
+    <table class="table table-hover">
+        <tr>
+            <td width="32px"><img src="{{ url_for('static', filename='profiles/' + follower.profile_pic) }}" 
+                height = "32" width = "32"></td>
+            <td>
+            <a href="{{url_for('user', username=follower.username)}}"> {{follower.username}}</a>
+            </td>
+        </tr>
+    </table>
+    {% endfor %}
+{% endblock %}
+

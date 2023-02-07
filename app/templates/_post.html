@@ -1,0 +1,45 @@
+<table class="table table-hover">
+    <tr>
+        <td width="70px">
+            <a href="{{ url_for('user', username=post.author.username) }}">
+                <img src="{{ url_for('static', filename='profiles/' + post.author.profile_pic) }}" height = "64" width = "64">
+            </a>
+        </td>
+        <td>
+            <a href="{{ url_for('user', username=post.author.username) }}">
+                {{ post.author.username }}
+            </a>
+            said {{ moment(post.timestamp).fromNow() }}:
+            <br>
+            {{ post.body }}
+        </td>
+        {% if post.user_id == current_user.id %}
+        <td>
+            <a href="{{ url_for('delete_post', id = post.id) }}" class="btn btn-outline-danger btn-sm">
+                Delete
+            </a>
+        </td>
+        {% endif %}
+
+        
+    </tr>
+
+</table>
+
+
+<!-- https://getbootstrap.com/docs/4.0/content/tables/
+
+{% if post.user_id == current_user.id %}
+    <tr>
+        <td width="70px">
+        </td>
+        <td width>
+            <a href="{{ url_for('delete_post', id = post.id) }}" class="btn btn-outline-danger btn-sm">
+                Delete Post
+            </a>
+        </td>
+        
+    </tr>
+    {% endif %}
+    
+     -->
